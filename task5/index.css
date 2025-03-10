@@ -1,0 +1,110 @@
+/* Reset mặc định */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.banner {
+  width: 100%;
+  display: block;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #fff;
+}
+
+.logo img {
+  height: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 20px 0;
+}
+
+.content {
+  background-color: #fff;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.content img {
+  width: 100%;
+  display: block;
+}
+
+h3 {
+  margin-top: 10px;
+  color: #fff;
+  background-color: #002244;
+  padding: 10px;
+}
+
+.video {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.video video {
+  width: 100%;
+  /* max-width: 800px; */
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #222;
+  color: #fff;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+}
+
+.form input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.form button {
+  padding: 10px 20px;
+  background-color: #ff9800;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
