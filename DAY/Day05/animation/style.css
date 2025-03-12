@@ -1,0 +1,40 @@
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: yellowgreen;
+  position: relative;
+}
+
+i {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: around;
+  animation-duration: 4s;
+  animation-iteration-count: 3;
+}
+@keyframes around {
+  0% {
+    left: 0px;
+    top: 0px;
+    transform: rotate(90deg);
+  }
+  24% {
+    left: 85px;
+    top: 0px;
+    transform: rotate(180deg);
+  }
+  49% {
+    left: 85px;
+    top: 85px;
+    transform: rotate(270deg);
+  }
+  74% {
+    left: 0px;
+    top: 85px;
+  }
+  99% {
+    left: 0px;
+    top: 0px;
+  }
+}
