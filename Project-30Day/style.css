@@ -3,3 +3,33 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "section section section"
+    "footer footer footer";
+  gap: 10px;
+}
+
+header {
+  background: #a4f0588b;
+  grid-area: header;
+}
+header > .header-top {
+  display: flex;
+  gap: 10px;
+}
+header > .header-main {
+  display: flex;
+}
+
+section {
+  background: #ff0000;
+  grid-area: section;
+}
+footer {
+  background: #007bff;
+  grid-area: footer;
+}

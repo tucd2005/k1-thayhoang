@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>
+      Viết 1 hàm khởi tạo giỏ hàng "Cart" có đầu vào là userID ,
+      products(array)có tính năng sau
+    </h3>
+    <p style="color: rgb(14, 79, 79)">
+      + viết phương thức tĩnh "calc()" cho cart giúp trả về tổng giá trị đơn
+      hàng
+    </p>
+    <p style="color: rgb(243, 105, 14)">
+      + viết phương thức tĩnh "checkout()" cho cart để xóa toàn bộ sản phẩm
+    </p>
+  </body>
+  <script>
+    const products = [
+      { id: 1, name: "dbfg", price: 10, quatity: 1 },
+      { id: 2, name: "asdfg", price: 40, quatity: 2 },
+    ];
+
+    function Cart(userIdvb, products) {
+      this.userId = userId;
+      this.products = products;
+      this.calc = function () {
+        for (let i = 1; i < this.products.length; i++) {
+          total += this.products.price * this.products.quatity;
+        }
+        return total;
+      };
+    }
+  </script>
+</html>

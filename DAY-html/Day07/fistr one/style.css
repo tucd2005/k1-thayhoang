@@ -1,0 +1,11 @@
+.container {
+  border: 1px solid red;
+  height: 300px;
+}
+
+.item {
+  border: 2px solid rgb(8, 113, 29);
+  height: 100%;
+  /* background-color: rgb(228, 255, 73); */
+  border-radius: 20px;
+}
