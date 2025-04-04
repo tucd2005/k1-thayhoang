@@ -2,8 +2,170 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>JavaScript Function Tests</title>
+    <style>
+      body {
+        font-family: Consolas, monospace;
+        background-color: #ffffff;
+        color: #d4d4d4;
+        padding: 20px;
+      }
+      pre {
+        background-color: #2d2d2d;
+        padding: 15px;
+        border-radius: 10px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+      }
+      .keyword {
+        color: #569cd6;
+      }
+      .string {
+        color: #ce9178;
+      }
+      .number {
+        color: #b5cea8;
+      }
+      .function {
+        color: #dcdcaa;
+      }
+      .comment {
+        color: #6a9955;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h2>🧠 JavaScript Functions & Tests</h2>
+
+    <pre><code>
+<span class="comment">// 1. Loại bỏ falsy values khỏi mảng</span>
+<span class="keyword">function</span> cleanFalsyValues(arr) {
+  <span class="keyword">return</span> arr.filter(Boolean);
+}
+console.log(cleanFalsyValues([<span class="number">1</span>, <span class="number">0</span>, <span class="string">""</span>, <span class="keyword">null</span>, <span class="string">"hello"</span>, <span class="keyword">undefined</span>, <span class="number">NaN</span>, <span class="number">2</span>, <span class="number">3</span>])); 
+<span class="comment">// Output: [1, "hello", 2, 3]</span>
+
+<span class="comment">// 2. Lọc số chẵn</span>
+<span class="keyword">function</span> filterEvenNumbers(arr) {
+  <span class="keyword">return</span> arr.filter(num => num % 2 === 0);
+}
+console.log(filterEvenNumbers([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])); 
+<span class="comment">// Output: [2, 4, 6]</span>
+
+<span class="comment">// 3. Lọc chuỗi dài > 5</span>
+<span class="keyword">function</span> filterLongStrings(arr) {
+  <span class="keyword">return</span> arr.filter(str => str.length > 5);
+}
+console.log(filterLongStrings([<span class="string">"hello"</span>, <span class="string">"world"</span>, <span class="string">"javascript"</span>, <span class="string">"nodejs"</span>])); 
+<span class="comment">// Output: ["javascript", "nodejs"]</span>
+
+<span class="comment">// 4. Tìm max, min và trung bình số nguyên tố</span>
+<span class="keyword">function</span> isPrime(n) {
+  <span class="keyword">if</span> (n < 2) <span class="keyword">return</span> <span class="keyword">false</span>;
+  <span class="keyword">for</span> (<span class="keyword">let</span> i = 2; i <= Math.sqrt(n); i++) {
+    <span class="keyword">if</span> (n % i === 0) <span class="keyword">return</span> <span class="keyword">false</span>;
+  }
+  <span class="keyword">return</span> <span class="keyword">true</span>;
+}
+
+<span class="keyword">function</span> findMinMaxAverage(arr) {
+  <span class="keyword">let</span> max = Math.max(...arr);
+  <span class="keyword">let</span> min = Math.min(...arr);
+  <span class="keyword">let</span> maxIndex = arr.indexOf(max);
+  <span class="keyword">let</span> minIndex = arr.indexOf(min);
+  <span class="keyword">let</span> primes = arr.filter(isPrime);
+  <span class="keyword">let</span> primeAverage = primes.length ? 
+    (primes.reduce((a, b) => a + b) / primes.length).toFixed(2) : <span class="keyword">null</span>;
+  
+  <span class="keyword">return</span> {
+    max,
+    maxIndex,
+    min,
+    minIndex,
+    primeAverage: primeAverage ? parseFloat(primeAverage) : <span class="keyword">null</span>
+  };
+}
+console.log(findMinMaxAverage([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>])); 
+<span class="comment">// Output: {max: 9, maxIndex: 5, min: 1, minIndex: 1, primeAverage: 3.33}</span>
+
+<span class="comment">// 5. Chèn số vào mảng theo thứ tự tăng dần sau khi lọc</span>
+<span class="keyword">function</span> insertNumber(arr, num) {
+  <span class="keyword">let</span> cleanArr = arr.filter(x => <span class="keyword">typeof</span> x === <span class="string">"number"</span> && !isNaN(x));
+  cleanArr.push(num);
+  cleanArr.sort((a, b) => a - b);
+  <span class="keyword">return</span> cleanArr;
+}
+console.log(insertNumber([<span class="number">3</span>, <span class="string">"hello"</span>, <span class="number">1</span>, <span class="number">NaN</span>, <span class="number">4</span>, <span class="keyword">null</span>], <span class="number">2</span>));
+<span class="comment">// Output: [1, 2, 3, 4]</span>
+</code></pre>
+  </body>
+
+  <script>
+    // bai 1 :
+    // console.log("Bai 1 =======");
+    // function cleanFalsyValues(arr) {
+    //   // Xử lý và in ra kết quả
+    //   const newArr = arr.filter(Boolean);
+    //   console.log(newArr);
+    // }
+
+    // Test
+
+    // cleanFalsyValues([1, 0, "", null, "hello", undefined, NaN, 2, 3]); // Output: [1, "hello", 2, 3]
+
+    // console.log("Bai 2 =======");
+    // function filterEvenNumbers(arr1) {
+    //   // Xử lý và in ra kết quả
+    //   const sum = arr1.filter((item) => item % 2 == 0);
+    //   console.log(sum);
+    // }
+
+    // // Test
+
+    // filterEvenNumbers([1, 2, 3, 4, 5, 6]); // Output: [2, 4, 6]
+    // filterEvenNumbers([1, 3, 5, 7]); // Output: []
+    // filterEvenNumbers([]); // Output: []
+    // filterEvenNumbers([-2, -1, 0, 1, 2]); // Output: [-2, 0, 2]
+
+    // // bai 3
+    // function filterLongStrings(arr) {
+    //   // Xử lý và in ra kết quả
+    //   const newArr = arr.filter((item) => item.length > 5);
+    //   console.log(newArr);
+    // }
+
+    // // Test
+    // filterLongStrings(["hello", "world", "javascript", "nodejs"]); // Output: ["javascript", "nodejs"]
+    // filterLongStrings(["hi", "hello world", "a b c", "goodbye!!"]); // Output: ["hello world", "goodbye!!"]
+    // filterLongStrings(["hi", "bye", "yes"]); // Output: []
+
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    function findMinMaxAverage(arr) {
+      let max = Math.max(...arr);
+      let min = Math.min(...arr);
+      let maxIndex = arr.indexOf(max);
+      let minIndex = arr.indexOf(min);
+      let primes = arr.filter(isPrime);
+      let primeAverage = primes.length
+        ? (primes.reduce((a, b) => a + b) / primes.length).toFixed(2)
+        : null;
+
+      return {
+        max,
+        maxIndex,
+        min,
+        minIndex,
+        primeAverage: primeAverage ? parseFloat(primeAverage) : null,
+      };
+    }
+    console.log(findMinMaxAverage([3, 1, 4, 1, 5, 9, 2, 6]));
+    // Output: {max: 9, maxIndex: 5, min: 1, minIndex: 1, primeAverage: 3.33}
+  </script>
 </html>
