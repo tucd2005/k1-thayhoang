@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Map</h1>
+    <p>map() callback</p>
+    <p>input: item,index,arr</p>
+    <p>output: trả về mảng đã biến đổi bằng số lượng phần tử mảng ban đầu</p>
+    <script>
+      const student = [
+        { id: 1, name: "Chu Duc Tu", age: 19 },
+        { id: 1, name: "Nguyen Trung Nguyen", age: 29 },
+        { id: 1, name: "Sugar Baby", age: 17 },
+      ];
+
+      // trả về mảng mới với tất cả các phần tử ban đầu 1 cặp key-value: "role":"student"
+
+      const newArr = student.map((item) => ({ ...item, role: "students" }));
+      console.log(newArr);
+
+      const products = [
+        { id: 1, name: "tomato", price: 2, quantity: 10 },
+        { id: 2, name: "apple", price: 10, quantity: 180 },
+      ];
+      const newProducts = products.map((item) => ({
+        ...item,
+        amount: item.price * item.quantity,
+      }));
+      console.log(newProducts);
+    </script>
+  </body>
+</html>

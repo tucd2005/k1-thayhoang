@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    1 . forEach <br />
+    2 . find<br />
+    3 . filter<br />
+    4 . map <br />
+    5. some<br />
+    6. every<br />
+    7. sort<br />
+    8. reduce
+    <br />
+
+    =========================== <br />
+
+    forEach callback
+    <br />
+    input : item , index
+    <br />
+    output : void 'callback không return (underfined)'<br />
+
+    <p style="color: red">Map có return , forEach không có return</p>
+  </body>
+  <script>
+    const animals = ["dog", "cat", "pig", "đom đóm"];
+
+    function findAnimal(animals) {
+      if (Array.isArray(animals)) {
+        const found = animals.findIndex((item, index) => {
+          console.log("", item, "ở vị trí", index);
+          return item === "đom đóm";
+        });
+
+        console.log("Kết quả tìm được:", found);
+      } else {
+        console.log("Không phải là mảng");
+      }
+    }
+
+    findAnimal(animals);
+  </script>
+</html>

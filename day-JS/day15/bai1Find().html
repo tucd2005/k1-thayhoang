@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      tr,
+      td,
+      th {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    1 . forEach <br />
+    2 . find<br />
+    3 . filter<br />
+    4 . map <br />
+    5. some<br />
+    6. every<br />
+    7. sort<br />
+    8. reduce
+    <br />
+
+    =========================== <br />
+
+    forEach callback
+    <br />
+    input : item , index
+    <br />
+    output : void 'callback không return (underfined)'<br />
+
+    <p style="color: red">Map có return , forEach không có return</p>
+  </body>
+  <script>
+    const animals = ["dog", "cat", "pig"];
+
+    // const result = animals.forEach((item, index) => {
+    //   console.log(item);
+    //   console.log(index);
+    //   return "hrlo";
+    // });
+    // console.log(result);
+
+    //  in ra danh sachs cac loai vat dang bang voi goi y da cho
+    function printAnimals(animals) {
+      let content = ` <table >
+        <thead>
+            <tr>
+                <th>stt</th>
+            <th>ten</th>
+            </tr>
+            
+        </thead>
+
+        <tbody>`;
+
+      Array.isArray(animals) &&
+        animals.forEach((item, index) => {
+          content += `<tr> 
+            <td>
+                ${index + 1}
+            </td>
+            <td>
+                ${item}
+            </td>
+   
+            </tr>`;
+        });
+      content += `</tbody>
+    </table>`;
+      document.write(content);
+    }
+
+    printAnimals(animals);
+  </script>
+</html>
