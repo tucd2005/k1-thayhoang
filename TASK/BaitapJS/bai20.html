@@ -5,5 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    baif 20
+  </body>
+  <script>
+    function printChristmasTree(n, character) {
+      if (!Number.isInteger(n) || n <= 0 || n >= 1000) {
+        console.log("n phai la so nguyen duong");
+        return;
+      }
+
+      if (typeof character !== "string" || character.length !== 1) {
+        console.log("character phải là 1 kí tự.");
+        return;
+      }
+
+      const totalWidth = 2 * n - 1;
+
+      const mid = Math.floor(totalWidth / 2);
+      // Math.floor gọi nó để đảm bảo rằng ta luôn chọn chỉ số nguyên (chứ không nhận số thập phân )  eg: phép tính nó ra 3,4 nhưng Math.floor chỉ nhận 3 thôi
+
+      for (let i = 0; i < n; i++) {
+        let row = Array(totalWidth).fill(" ");
+
+        for (let j = mid - i; j <= mid + i; j++) {
+          row[j] = character;
+        }
+        console.log(row.join(" "));
+      }
+
+      let truck = Array(totalWidth).fill(" ");
+      truck[mid] = character;
+      console.log(truck.join(" "));
+    }
+
+    printChristmasTree(5, "*");
+    printChristmasTree(5, "0");
+  </script>
 </html>
