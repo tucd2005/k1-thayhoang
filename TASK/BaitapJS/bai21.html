@@ -17,87 +17,105 @@
         overflow-x: auto;
         white-space: pre-wrap;
       }
-      .keyword {
-        color: #569cd6;
-      }
-      .string {
-        color: #ce9178;
-      }
-      .number {
-        color: #b5cea8;
-      }
-      .function {
-        color: #dcdcaa;
-      }
-      .comment {
-        color: #6a9955;
-      }
+      .keyword { color: #569cd6; }
+      .string { color: #ce9178; }
+      .number { color: #b5cea8; }
+      .function { color: #dcdcaa; }
+      .comment { color: #6a9955; }
     </style>
-  </head>
-  <body>
-    <h2>🧠 JavaScript Functions & Tests</h2>
-
+    
+    <h2>📘 Đề bài luyện tập JavaScript</h2>
+    
     <pre><code>
-<span class="comment">// 1. Loại bỏ falsy values khỏi mảng</span>
-<span class="keyword">function</span> cleanFalsyValues(arr) {
-  <span class="keyword">return</span> arr.filter(Boolean);
-}
-console.log(cleanFalsyValues([<span class="number">1</span>, <span class="number">0</span>, <span class="string">""</span>, <span class="keyword">null</span>, <span class="string">"hello"</span>, <span class="keyword">undefined</span>, <span class="number">NaN</span>, <span class="number">2</span>, <span class="number">3</span>])); 
-<span class="comment">// Output: [1, "hello", 2, 3]</span>
-
-<span class="comment">// 2. Lọc số chẵn</span>
-<span class="keyword">function</span> filterEvenNumbers(arr) {
-  <span class="keyword">return</span> arr.filter(num => num % 2 === 0);
-}
-console.log(filterEvenNumbers([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])); 
-<span class="comment">// Output: [2, 4, 6]</span>
-
-<span class="comment">// 3. Lọc chuỗi dài > 5</span>
-<span class="keyword">function</span> filterLongStrings(arr) {
-  <span class="keyword">return</span> arr.filter(str => str.length > 5);
-}
-console.log(filterLongStrings([<span class="string">"hello"</span>, <span class="string">"world"</span>, <span class="string">"javascript"</span>, <span class="string">"nodejs"</span>])); 
-<span class="comment">// Output: ["javascript", "nodejs"]</span>
-
-<span class="comment">// 4. Tìm max, min và trung bình số nguyên tố</span>
-<span class="keyword">function</span> isPrime(n) {
-  <span class="keyword">if</span> (n < 2) <span class="keyword">return</span> <span class="keyword">false</span>;
-  <span class="keyword">for</span> (<span class="keyword">let</span> i = 2; i <= Math.sqrt(n); i++) {
-    <span class="keyword">if</span> (n % i === 0) <span class="keyword">return</span> <span class="keyword">false</span>;
-  }
-  <span class="keyword">return</span> <span class="keyword">true</span>;
-}
-
-<span class="keyword">function</span> findMinMaxAverage(arr) {
-  <span class="keyword">let</span> max = Math.max(...arr);
-  <span class="keyword">let</span> min = Math.min(...arr);
-  <span class="keyword">let</span> maxIndex = arr.indexOf(max);
-  <span class="keyword">let</span> minIndex = arr.indexOf(min);
-  <span class="keyword">let</span> primes = arr.filter(isPrime);
-  <span class="keyword">let</span> primeAverage = primes.length ? 
-    (primes.reduce((a, b) => a + b) / primes.length).toFixed(2) : <span class="keyword">null</span>;
-  
-  <span class="keyword">return</span> {
-    max,
-    maxIndex,
-    min,
-    minIndex,
-    primeAverage: primeAverage ? parseFloat(primeAverage) : <span class="keyword">null</span>
-  };
-}
-console.log(findMinMaxAverage([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>])); 
-<span class="comment">// Output: {max: 9, maxIndex: 5, min: 1, minIndex: 1, primeAverage: 3.33}</span>
-
-<span class="comment">// 5. Chèn số vào mảng theo thứ tự tăng dần sau khi lọc</span>
-<span class="keyword">function</span> insertNumber(arr, num) {
-  <span class="keyword">let</span> cleanArr = arr.filter(x => <span class="keyword">typeof</span> x === <span class="string">"number"</span> && !isNaN(x));
-  cleanArr.push(num);
-  cleanArr.sort((a, b) => a - b);
-  <span class="keyword">return</span> cleanArr;
-}
-console.log(insertNumber([<span class="number">3</span>, <span class="string">"hello"</span>, <span class="number">1</span>, <span class="number">NaN</span>, <span class="number">4</span>, <span class="keyword">null</span>], <span class="number">2</span>));
-<span class="comment">// Output: [1, 2, 3, 4]</span>
-</code></pre>
+    <span class="comment">// 1. Viết hàm nhận vào một mảng và làm sạch các falsy values có trong mảng</span>
+    Bài 1 : Viết hàm <span class="function">cleanFalsyValues(arr)</span> để nhận vào một mảng <span class="keyword">arr</span> và loại bỏ các giá trị falsy có trong mảng đó.
+    
+    <span class="comment">// Ví dụ:</span>
+    <span class="keyword">function</span> cleanFalsyValues(arr) {
+      <span class="comment">// Xử lý và in ra kết quả</span>
+    }
+    
+    <span class="comment">// Test</span>
+    cleanFalsyValues([<span class="number">1</span>, <span class="number">0</span>, <span class="string">""</span>, <span class="keyword">null</span>, <span class="string">"hello"</span>, <span class="keyword">undefined</span>, <span class="number">NaN</span>, <span class="number">2</span>, <span class="number">3</span>]); 
+    <span class="comment">// Output: [1, "hello", 2, 3]</span>
+    
+    
+    <span class="comment">// 2. Viết hàm lọc lấy các số chẵn của một mảng</span>
+    Bài 2 : Viết hàm <span class="function">filterEvenNumbers(arr)</span> để lọc lấy các số chẵn từ mảng <span class="keyword">arr</span>.
+    
+    <span class="comment">// Ví dụ:</span>
+    <span class="keyword">function</span> filterEvenNumbers(arr) {
+      <span class="comment">// Xử lý và in ra kết quả</span>
+    }
+    
+    <span class="comment">// Test</span>
+    filterEvenNumbers([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]); 
+    <span class="comment">// Output: [2, 4, 6]</span>
+    filterEvenNumbers([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>]); 
+    <span class="comment">// Output: []</span>
+    filterEvenNumbers([]); 
+    <span class="comment">// Output: []</span>
+    filterEvenNumbers([<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]); 
+    <span class="comment">// Output: [-2, 0, 2]</span>
+    
+    
+    <span class="comment">// 3. Viết hàm lọc lấy các chuỗi có độ dài lớn hơn 5 của mảng các chuỗi</span>
+    Bài 3 : Viết hàm <span class="function">filterLongStrings(arr)</span> để lọc các chuỗi có độ dài > 5 từ mảng <span class="keyword">arr</span>.
+    
+    <span class="comment">// Ví dụ:</span>
+    <span class="keyword">function</span> filterLongStrings(arr) {
+      <span class="comment">// Xử lý và in ra kết quả</span>
+    }
+    
+    <span class="comment">// Test</span>
+    filterLongStrings([<span class="string">"hello"</span>, <span class="string">"world"</span>, <span class="string">"javascript"</span>, <span class="string">"nodejs"</span>]); 
+    <span class="comment">// Output: ["javascript", "nodejs"]</span>
+    filterLongStrings([<span class="string">"hi"</span>, <span class="string">"hello world"</span>, <span class="string">"a b c"</span>, <span class="string">"goodbye!!"</span>]); 
+    <span class="comment">// Output: ["hello world", "goodbye!!"]</span>
+    filterLongStrings([<span class="string">"hi"</span>, <span class="string">"bye"</span>, <span class="string">"yes"</span>]); 
+    <span class="comment">// Output: []</span>
+    
+    
+    <span class="comment">// 4. Viết hàm tìm max, min và trung bình các số nguyên tố trong mảng</span>
+    Bài 4 : Viết hàm <span class="function">findMinMaxAverage(arr)</span> để:
+    
+    - Tìm số lớn nhất và vị trí.
+    - Tìm số nhỏ nhất và vị trí.
+    - Tính trung bình cộng các số nguyên tố (không có thì trả về <span class="keyword">null</span>).
+    
+    <span class="comment">// Ví dụ:</span>
+    <span class="keyword">function</span> findMinMaxAverage(arr) {
+      <span class="comment">// Xử lý và in ra kết quả</span>
+    }
+    
+    <span class="comment">// Test</span>
+    findMinMaxAverage([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>]); 
+    <span class="comment">// Output: {max: 9, maxIndex: 5, min: 1, minIndex: 1, primeAverage: 3.33}</span>
+    
+    
+    <span class="comment">// 5. Viết hàm chèn số vào mảng theo thứ tự tăng dần sau khi lọc</span>
+    Bài 5 : Cho mảng chưa sắp xếp. Hãy sắp xếp mảng theo thứ tự tăng dần và loại bỏ toàn bộ giá trị không phải số hoặc là NaN.
+    
+    Viết hàm <span class="function">insertNumber(arr, num)</span> để chèn số <span class="keyword">num</span> vào <span class="keyword">arr</span> đã làm sạch.
+    
+    <span class="comment">// Ví dụ:</span>
+    <span class="keyword">function</span> insertNumber(arr, num) {
+      <span class="comment">// Xử lý và in ra kết quả</span>
+    }
+    
+    <span class="comment">// Test</span>
+    insertNumber([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>], <span class="number">6</span>); 
+    <span class="comment">// Output: [1, 3, 5, 6, 7, 9]</span>
+    insertNumber([<span class="number">3</span>, <span class="string">"hello"</span>, <span class="number">1</span>, <span class="number">NaN</span>, <span class="number">4</span>, <span class="keyword">null</span>], <span class="number">2</span>); 
+    <span class="comment">// Output: [1, 2, 3, 4]</span>
+    insertNumber([], <span class="number">5</span>); 
+    <span class="comment">// Output: [5]</span>
+    insertNumber([<span class="number">-1</span>, <span class="number">10</span>, <span class="number">-5</span>, <span class="string">"abc"</span>], <span class="number">-3</span>); 
+    <span class="comment">// Output: [-5, -3, -1, 10]</span>
+    insertNumber([<span class="number">5</span>, <span class="number">2</span>, <span class="number">8</span>], <span class="keyword">NaN</span>); 
+    <span class="comment">// Output: [2, 5, 8]</span>
+    </code></pre>
+    
   </body>
 
   <script>
@@ -139,33 +157,59 @@ console.log(insertNumber([<span class="number">3</span>, <span class="string">"h
     // filterLongStrings(["hi", "hello world", "a b c", "goodbye!!"]); // Output: ["hello world", "goodbye!!"]
     // filterLongStrings(["hi", "bye", "yes"]); // Output: []
 
-    function isPrime(n) {
-      if (n < 2) return false;
-      for (let i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i === 0) return false;
+
+    // // bai 4
+//     function findMinMaxAverage(arr) {
+//       // Xử lý và in ra kết quả
+//       // 
+//       for (let i = 0; i < arr.length; i++){
+//         if (arr[i]< 0){
+//           arr[i] = -arr[i]
+//         }
+//       }
+//       let max = Math.max(...arr)
+//       let min = Math.min(...arr)
+
+//       let maxIndex = arr.indexOf(max)
+//       let minIndex = arr.indexOf(min) 
+
+//       console.log(
+//         "max" + max,
+//         "maxIndex" + maxIndex,
+//         "min" + min,
+//         "minIndex" + minIndex,
+//       );
+      
+//     }
+// // Test
+//     findMinMaxAverage([3, 1, 4, 1, 5, 9, 2, 6]); // Output: {max: 9, maxIndex: 5, min: 1, minIndex: 1, primeAverage: 3.33 }
+//     findMinMaxAverage([5, 5, 2, 2, 1]); // Output: {max: 5, maxIndex: 0, min: 1, minIndex: 4, primeAverage: 3.5 }
+//     findMinMaxAverage([-3, 7, -8, 11, 0]); // Output: {max: 11, maxIndex: 3, min: -8, minIndex: 2, primeAverage: 9 }
+
+
+    //  // bai 5 : 
+    function insertNumber(arr, num) {
+      // Xử lý và in ra kết quả
+      let filtereArr = arr.filter(item => typeof item === "number" && !isNaN(item))
+      if (typeof num === "number" && !isNaN(num)) {
+        filtereArr.push(num)
       }
-      return true;
+      filtereArr.sort((a,b)=> a - b )
+      console.log(filtereArr);
+      
+      
     }
-
-    function findMinMaxAverage(arr) {
-      let max = Math.max(...arr);
-      let min = Math.min(...arr);
-      let maxIndex = arr.indexOf(max);
-      let minIndex = arr.indexOf(min);
-      let primes = arr.filter(isPrime);
-      let primeAverage = primes.length
-        ? (primes.reduce((a, b) => a + b) / primes.length).toFixed(2)
-        : null;
-
-      return {
-        max,
-        maxIndex,
-        min,
-        minIndex,
-        primeAverage: primeAverage ? parseFloat(primeAverage) : null,
-      };
-    }
-    console.log(findMinMaxAverage([3, 1, 4, 1, 5, 9, 2, 6]));
-    // Output: {max: 9, maxIndex: 5, min: 1, minIndex: 1, primeAverage: 3.33}
+    
+    // Test
+    insertNumber([1, 3, 5, 7, 9], 6); 
+    // Output: [1, 3, 5, 6, 7, 9]
+    insertNumber([3, "hello", 1, NaN, 4, null], 2); 
+    // Output: [1, 2, 3, 4]
+    insertNumber([], 5); 
+    // Output: [5]
+    insertNumber([-1, 10, -5, "abc"], -3); 
+    // Output: [-5, -3, -1, 10]
+    insertNumber([5, 2, 8], NaN); 
+    // Output: [2, 5, 8]
   </script>
 </html>
