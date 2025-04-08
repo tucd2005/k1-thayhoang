@@ -10,24 +10,23 @@
       const arrNumber = [1, 2, 3, 4, 5, 5, null, undefined, 6];
 
       function reverseArr(arr) {
-        // Xử lý và in ra kết quả
-        const newArr = [];
+        let arrOut = [];
+        let cache = {};
+
         for (let i = arr.length - 1; i >= 0; i--) {
-          const item = arr[i];
-          if (!!item) {
-            if (!newArr.includes(item)) {
-              newArr.push(item);
-            }
+          let num = arr[i];
+
+          if (typeof num === "number" && !isNaN(num) && !cache[num]) {
+            arrOut.push(num);
+            cache[num] = true;
           }
         }
-        return newArr;
-      }
-      const result = reverseArr(arrNumber);
-      console.log(arrNumber);
-      console.log(result);
-      document.writeln("Mảng của bạn: " + arrNumber + "<br>");
 
-      document.writeln("Mảng của bạn sau khi đảo: " + result + "<br>");
+        return arrOut;
+      }
+
+      const result = reverseArr(arrNumber);
+      console.log(result); // [6, 5, 4, 3, 2, 1]
     </script>
   </body>
 </html>
