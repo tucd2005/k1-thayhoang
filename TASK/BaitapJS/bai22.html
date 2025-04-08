@@ -5,5 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    Bai 22 ne anh don g
+  </body>
+  <script>
+    const arrayNumber = [1, 2, 3, 4, 3, 2, 1];
+    function checkSymmetricalArr(arr) {
+      // Xử lý logic
+
+      for (let i = 0; i <= arr.length / 2; i++) {
+        if (arr[i] !== arr[arr.length - i - 1]) {
+          return false;
+        }
+      }
+      return true;
+    }
+    const result = checkSymmetricalArr(arrayNumber);
+    console.log(result); //true
+  </script>
 </html>
