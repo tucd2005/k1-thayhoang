@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const animals = [
+        "apple",
+        "banana",
+        "kiwi",
+        "kiwi",
+        "banana",
+        "orange",
+        "apple",
+        "kiwi",
+      ];
+      function countAnimals(arr) {
+        return arr.reduce((acc, cur) => {
+          if (acc[cur]) {
+            acc[cur]++;
+          } else {
+            acc[cur] = 1;
+          }
+          return acc;
+        }, {});
+      }
+      console.log(countAnimals(animals));
+    </script>
+  </body>
+</html>
