@@ -9,6 +9,7 @@
     ** Tạo ra function trả về mảng mới đã loại bỏ các phần tử trùng lặp ở mảng
     đưa vào
     <script>
+      // Mảng chứa các phần tử bị trùng lặp
       const animals = [
         "apple",
         "banana",
@@ -19,14 +20,21 @@
         "apple",
         "kiwi",
       ];
+
+      // Hàm newArr nhận vào một mảng và trả về mảng mới không chứa phần tử trùng
       function newArr(arr) {
         return arr.reduce((acc, cur) => {
+          // Kiểm tra xem phần tử hiện tại (cur) đã có trong mảng kết quả (acc) chưa
           if (!acc.includes(cur)) {
+            // Nếu chưa có thì thêm vào mảng kết quả
             acc.push(cur);
           }
+          // Trả về mảng kết quả để dùng cho vòng lặp reduce tiếp theo
           return acc;
-        }, []);
+        }, []); // [] là giá trị khởi tạo ban đầu cho acc (mảng rỗng)
       }
+
+      // Gọi hàm và in ra kết quả: mảng không trùng lặp
       console.log(newArr(animals));
     </script>
   </body>
