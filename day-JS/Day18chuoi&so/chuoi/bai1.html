@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Chuỗi là gì ????
+    <p>Phương thức làm việc với chuỗi</p>
+    <script>
+      // vấn đề đầu tiên : truy cập vào chuỗi
+
+      let myName = "Chu Duc Tu";
+      console.log(myName.charAt(5)); // charAt :
+      // string
+      console.log(myName[0]); // string/undefined
+
+      // cập nhật và xóa 1 phần của chuỗi là điều không thể , (primitive type)
+
+      //   vòng lặp qua chuỗi
+      for (let i = 0; i < myName.length; i++) {
+        // đây gọi là vòng lặp thông qua chuỗi
+        console.log(myName[i]);
+      }
+
+      //   chuyển đổi sang kiểu chuỗi
+      let age = 100;
+      console.log(age.toString()); // toString dùng để làm gì ???
+      console.log(age + "");
+    </script>
+  </body>
+</html>

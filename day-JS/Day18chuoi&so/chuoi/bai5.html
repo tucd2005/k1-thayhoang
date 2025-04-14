@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      Viết hàm sortName() theo tên người dùng từ a-z (chỉ sắp xếp theo tên , nếu
+      trùng tên , mới sắp xếp theo họ + tên đệm)
+    </p>
+
+    <script>
+      const arr = [
+        { id: 1, fullname: "Nguyen Anh Huy", age: 32 },
+
+        { id: 3, fullname: "Hoang Thanh Huy", age: 30 },
+        { id: 4, fullname: "Lê Đạt", age: 30 },
+        { id: 2, fullname: "Nguyen Huy Hoang", age: 10 },
+        { id: 5, fullname: "Lê Duy Đạt", age: 30 },
+        { id: 6, fullname: "Huy Quốc", age: 30 },
+      ];
+      function sortName(arr, fullname) {
+        const result = arr.filter((item) => {
+          let arrOfName = item.fullname.split(" ");
+          console.log(arrOfName);
+
+          let firstName = arrOfName[arrOfName.length - 1];
+          return firstName === fullname;
+
+          arr.sort((a, b) => {
+            if (a.arr < b.arr) {
+              return +1;
+            }
+          });
+        });
+        return result;
+      }
+      console.log(sortName(arr));
+    </script>
+  </body>
+</html>

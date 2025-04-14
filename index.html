@@ -14,40 +14,19 @@
       .container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 10px;
+        /* gap: 10px; */
       }
 
       .container a {
         text-decoration: none;
         font-weight: bold;
-        color: black;
-        transition: transform 0.2s;
+        color: rgb(38, 0, 255);
+        transition: transform 0.9s;
         animation: rainbowText 5s linear infinite;
       }
 
       .container a:hover {
         transform: scale(1.1);
-      }
-
-      @keyframes rainbowText {
-        0% {
-          color: red;
-        }
-        20% {
-          color: orange;
-        }
-        40% {
-          color: yellow;
-        }
-        60% {
-          color: green;
-        }
-        80% {
-          color: blue;
-        }
-        100% {
-          color: violet;
-        }
       }
     </style>
   </head>

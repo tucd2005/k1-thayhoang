@@ -20,17 +20,30 @@
       { fullname: "Nguyen Van E", age: 32, address: "LangSon" },
     ];
 
+    // khởi tạo một biến groupBy với giá trị là một hàm (function expression).
     function groupBy(arr, key) {
-      // Xử lý và in ra kết quả
+      // Hàm groupBy dùng để nhóm các phần tử trong mảng 'arr' theo thuộc tính 'key'
+
       return arr.reduce((acc, cur) => {
+        // Duyệt qua từng phần tử trong mảng 'arr' bằng reduce
+        // 'acc' là đối tượng chứa kết quả nhóm
+        // 'cur' là phần tử hiện tại trong quá trình duyệt
+
         const groupAge = cur[key];
+        // Lấy giá trị của key cần nhóm từ phần tử hiện tại
+        // Ví dụ: nếu key là 'age', thì groupAge có thể là 18, 20, v.v.
+
         if (!acc[groupAge]) {
           acc[groupAge] = [];
+          // Nếu chưa có nhóm nào mang giá trị 'groupAge', tạo mảng mới cho nhóm đó
         }
+
         acc[groupAge].push(cur);
+        // Thêm phần tử hiện tại vào đúng nhóm tương ứng
 
         return acc;
-      }, {});
+        // Trả về đối tượng nhóm để dùng trong lần lặp tiếp theo
+      }, {}); // Giá trị khởi tạo là object rỗng, vì ta đang gom nhóm theo key
     }
 
     // Output:

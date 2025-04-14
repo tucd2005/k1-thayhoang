@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span>Biến đổi chuỗi</span>
+    <p>
+      toUpperCase: tạo ra bản coppy thay đổi từ chữ thường chuyển thành chữ in
+      hoa
+    </p>
+    <p>
+      toLowerCase: tạo ra bản coppy thay đổi từ chữ hoa chuyển thành chữ thường
+    </p>
+    <p>
+      slice : cắt chuỗi "Hỗ trợ chỉ số , tạo ra chuỗi con được cắt từ chuỗi ban
+      đầu , nếu không cắt được chuỗi con thì ra chuỗi rỗng "
+    </p>
+    <p>substring(start, end): tương tự như slice , nhưng k nhận số âm</p>
+
+    <p>
+      split() :lấy một mẫu và chia chuỗi này thành một danh sách các chuỗi con
+      có thứ tự bằng cách tìm kiếm mẫu, đưa các chuỗi con này vào một mảng và
+      trả về mảng.
+    </p>
+  </body>
+  <script>
+    let schools = " cao dang FPOLY";
+    console.log(schools.toUpperCase()); // tạo ra bản coppy thay đổi từ chữ thường chuyển thành chữ in hoa
+    console.log(schools.toLowerCase()); // tạo ra bản coppy thay đổi từ chữ hoa chuyển thành chữ thường
+    console.log(schools);
+
+    //  cắt chuỗi : slice
+
+    console.log("====================================");
+    console.log(schools.slice(1, 5));
+    console.log("====================================");
+
+    // substring(start, end):  tương tự như slice , nhưng k nhận số âm
+    console.log(schools.substring(0, 9));
+
+    // split() :lấy một mẫu và chia chuỗi này thành một danh sách các chuỗi con có thứ tự bằng cách tìm kiếm mẫu, đưa các chuỗi con này vào một mảng và trả về mảng.
+    console.log("====================================");
+    console.log(schools.split("", 2));
+    console.log("====================================");
+
+    // bài 1 : đểm xem content có bao nhiêu từ
+    let content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit.                                    
+              Illum accusantium iure similique rem at laudantium, ad repellat illo nisi nostrum est nihil ex
+              
+              
+              
+              
+              cepturi esse quaerat sequi incidunt ut? Eaque ipsa assumenda quae illo vitae amet repellat rem mol
+              
+              
+              
+              estiae facere aspernatur incidunt deleniti, adipisci dolorem dolores libero voluptate aliquid impedit est perferendis ipsum! Ratione odio necessitatibus, quisquam id incidunt ipsa voluptates laborum adipisci qui modi minima facere quam vel itaque nulla distinctio inventore cupiditate, illo tenetur vitae a. Iure deserunt fugiat voluptas. Quidem tempora suscipit asperiores facere ducimus voluptatem non minima quis ab quasi vel, fugit repellat consequuntur consequatur quae saepe?`;
+    console.log(content.split(" ", content[content.length]));
+  </script>
+</html>
