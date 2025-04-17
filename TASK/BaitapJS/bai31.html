@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Viết hàm đếm số từ trng mảng các câu <br />
+    Thực hiện viết hàm countTotalWords đê đếm số lượng các từ trong mảng các
+    chuỗi // Input const arrayWords = ["Hello world", "JS is fun", "Arrays and
+    strings"]; // 8 function countTotalWords(arr) { // Logic bài tập và trả về
+    kết quả } // Test countTotalWords(["Hello world", "JS is fun", "Arrays and
+    strings"]);
+  </body>
+
+  <script>
+    // Viết hàm đếm số từ trong mảng các câu <br />
+    // Thực hiện viết hàm countTotalWords đê đếm số lượng các từ trong mảng các chuỗi
+
+    const arrayWords = ["Hello world", "JS is fun", "Arrays and strings"]; // 8
+
+    function countTotalWords(arr) {
+      // Logic bài tập và trả về kết quả
+
+      console.log("====================================");
+      const newArr = arrayWords.join(", ");
+      console.log(newArr);
+      console.log(newArr.split(" ", newArr[newArr.length]));
+
+      console.log("====================================");
+    }
+    // Test
+    countTotalWords(["Hello world", "JS is fun", "Arrays and strings"]);
+  </script>
+</html>

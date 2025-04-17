@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Viết hàm trả về các chuỗi chứa từ khóa (Không phân biệt chữ hoa chữ thường)
+    <br />
+    Thực hiện viết hàm filterByKeyword để trả về các mảng chứa chuỗi các từ khóa
+    <br />
+    Nếu không tìm được phần tử nào thì in ra [].
+  </body>
+  <script>
+    // Input
+    const arrayString = ["JavaScript", "java", "Python", "Ruby"];
+    let keyWord = "ja";
+
+    function filterByKeyword(arrayString, keyWord) {
+      // Logic bài toán và trả về kết quả
+      let ketQua = [];
+
+      for (let i = 0; i < arrayString.length; i++) {
+        let chuoiHientai = arrayString[i];
+        let chuoiThuong = chuoiHientai.toLowerCase();
+        let tukhoaThuong = keyWord.toLowerCase();
+        let coChua = chuoiThuong.includes(tukhoaThuong);
+
+        if (coChua) {
+          ketQua.push(chuoiHientai);
+        }
+      }
+      return ketQua;
+    }
+    // Test
+
+    filterByKeyword(arrayString, keyWord); //["JavaScript", "java"]
+    console.log(filterByKeyword(arrayString, keyWord));
+  </script>
+</html>
