@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Bài 3 (3 điểm): Chuyển mảng sau thành dạng thẻ select trong HTML và đưa ra
+    ngoài màn hình.
+    <h1>
+      <option value="">Chuyên mục 1</option>
+    </h1>
+  </body>
+  <script>
+    const categories = [
+      {
+        id: 1,
+        name: "Chuyên mục 1",
+      },
+      {
+        id: 2,
+        name: "Chuyên mục 2",
+        children: [
+          {
+            id: 4,
+            name: "Chuyên mục 2.1",
+          },
+          {
+            id: 5,
+            name: "Chuyên mục 2.2",
+            children: [
+              {
+                id: 10,
+                name: "Chuyên mục 2.2.1",
+              },
+              {
+                id: 11,
+                name: "Chuyên mục 2.2.2",
+              },
+              {
+                id: 12,
+                name: "Chuyên mục 2.2.3",
+              },
+            ],
+          },
+          {
+            id: 6,
+            name: "Chuyên mục 2.3",
+          },
+        ],
+      },
+      {
+        id: 3,
+        name: "Chuyên mục 3",
+        children: [
+          {
+            id: 7,
+            name: "Chuyên mục 3.1",
+          },
+          {
+            id: 8,
+            name: "Chuyên mục 3.2",
+          },
+          {
+            id: 9,
+            name: "Chuyên mục 3.3",
+          },
+        ],
+      },
+    ];
+    const newArr = categories.flat(Infinity);
+    console.log(newArr);
+    const voiu = newArr.concat(newArr(newArr));
+    console.log(voiu);
+
+    console.log(document.write(newArr));
+  </script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="email" placeholder="moi nhap email...">
+    <button id="btn" >clickme</button>
+    <script>
+
+        // các cách gắn sự kiện 
+        /**
+         * 1. gắn lời gọi hàm vào attribute của thẻ html
+         * 2. dùng JS để gắn hàm sử lí sự kiện 
+         * 3. dùng eventListerner (có thể gắn nhiều hàm lắng nghe sự kiện cho cùng 1 phần tử mà không lo lắng bị ghi đè)
+         * 
+         * 
+         *  */
+
+        // const btne = document.getElementById("btn")
+        // console.log({btn});
+        // console.log(btne.onclick);
+        
+        // btne.onclick = function() {
+        //     console.log("xin ");  
+        // }
+
+        // btne.addEventListener("click", function() {
+        //     console.log("aok");
+            
+        // })
+
+        const inputE = document.getElementsByName("email")[0]
+        console.log(inputE);
+        
+        inputE.onchange = function() {
+            console.log(event);
+            console.log("1")
+        }
+
+        inputE.oninput = function() {
+            console.log(event);
+            console.log('11');
+        }
+
+        // tìm hiểu trước : sự kiện bắt 
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SetTimeOut - SetInterval</title>
+  </head>
+  <body>
+    <h1>SetTimeOut - SetInterval</h1>
+  </body>
+  <script>
+    console.log(" em đến đây lâu chưa ? ");
+
+    setTimeout(() => {
+      console.log("em đến đây từ chiều ");
+    }, 1000);
+    console.log("con mẹ m nói phét à ");
+
+    // const interval = setInterval(() => {
+    //     console.log("js");
+
+    // }, 100000000)
+
+    // bai1 cho i = 0  dùng timer để mỗi giây in ra i tăng lên 1 so với lần trước đó
+
+    let i = 0;
+    setInterval(() => {
+      document.close();
+      document.write(`${getHours()} : ${getMinutes()} : ${getSeconds()}`);
+    }, 1000);
+
+    // làm cái đồng hồ
+  </script>
+</html>

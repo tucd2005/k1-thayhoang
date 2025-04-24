@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="products"></div>
+    <script>
+        const data = [
+            { id: 1, name: "iphone 16 pro max", price: 2000 },
+            { id: 2, name: "Xiaomi red mi note 12", price: 800 },
+            { id: 3, name: "Samsung S22 Ultra", price: 1400 },
+        ];
+        console.log(data);
+
+      // ******** đưa danh sách sản phẩm ra màn hình, sản phẩm nào có giá cao nhất thì tô đỏ thông tin của sản phẩm đó.
+      const products = document.getElementsByClassName("products")[0];
+      let maxPrice = data[0].price;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].price > maxPrice) {
+          maxPrice = data[i].price;
+        }
+      }
+
+      data.forEach((item) => {
+        let liElement = document.createElement("li");
+        liElement.innerHTML = `
+        <h2>${item.name}</h2>
+      <p>${item.price}</p>
+        `;
+        if (item.price === maxPrice) {
+          liElement.style.color = "red";
+        }
+        products.appendChild(liElement);
+      });
+
+
+      const newData = data.map(item => ({
+        ...item,slug:`${item.name.toLocaleLowerCase().replaceAll(" ","-")}-${item.id}`
+      }))
+      console.log(newData);
+
+      newData.forEach((item) => {
+        let liElement = document.createElement("li");
+        liElement.innerHTML = `
+        <h2>${item.name}</h2>
+      <p>${item.price}</p>
+        `;
+        if (item.price === maxPrice) {
+          liElement.style.color = "red";
+        }
+        products.appendChild(liElement);
+      });
+      
+      
+
+// * 
+
+      /**
+       * Tạo ra 1 mảng sản phẩm bổ sung thuộc tính slug
+       * Bọc thể h2 của sản phẩm trong thẻ a 
+       * Bổ sung href cho thẻ a với slug
+      */
+    </script>
+</body>
+</html>
