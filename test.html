@@ -1,73 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    baif 20
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="actions()">abc</button>
   <script>
-    function printChristmasTree(n, character) {
-      // Kiểm tra xem n có phải là số nguyên dương nhỏ hơn 100 không
-      if (!Number.isInteger(n) || n <= 0 || n >= 100) {
-        console.log("n phải là số nguyên dương nhỏ hơn 100."); // Nếu không hợp lệ, in ra lỗi
-        return; // Thoát khỏi hàm nếu điều kiện sai
-      }
-
-      // Kiểm tra xem character có phải là một ký tự hay không
-      if (typeof character !== "string" || character.length !== 1) {
-        console.log("character phải là một ký tự."); // Nếu không hợp lệ, in ra lỗi
-        return; // Thoát khỏi hàm nếu điều kiện sai
-      }
-
-      const totalWidth = 2 * n - 1; // Tính tổng chiều rộng của mỗi dòng cây thông (đáy tán cây)
-      const mid = Math.floor(totalWidth / 2); // Tính vị trí chính giữa của dòng (dùng để căn chỉnh cây cho cân đối)
-
-      // In phần tán cây
-      for (let i = 0; i < n; i++) {
-        let row = Array(totalWidth).fill(" "); // Tạo một dòng toàn khoảng trắng
-        for (let j = mid - i; j <= mid + i; j++) {
-          // Duyệt từ trái sang phải xung quanh điểm giữa, tăng dần theo i
-          row[j] = character; // Gán ký tự vào vị trí đang xét
-        }
-        console.log(row.join("")); // In dòng hiện tại ra màn hình
-      }
-
-      // In phần thân cây (gốc cây)
-      let trunk = Array(totalWidth).fill(" "); // Tạo một dòng toàn khoảng trắng
-      trunk[mid] = character; // Đặt ký tự ở vị trí giữa làm thân cây
-      console.log(trunk.join("")); // In ra dòng thân cây
+    function actions() {
+      confirm("ok")
+      window.location.href = "https://www.google.com/"
     }
-
-    // Ví dụ sử dụng
-    printChristmasTree(5, "*");
-    //     *
-    //    ***
-    //   *****
-    //  *******
-    // *********
-    //     *
-
-    printChristmasTree(4, "o");
-    //    o
-    //   ooo
-    //  ooooo
-    // ooooooo
-    //    o
-
-    /*
-=== LUỒNG CHẠY CỦA CHƯƠNG TRÌNH ===
-1. Hàm được gọi với tham số n và character.
-2. Chương trình kiểm tra tính hợp lệ của đầu vào:
-   - n phải là số nguyên dương nhỏ hơn 100.
-   - character phải là một ký tự duy nhất.
-3. Nếu đầu vào hợp lệ:
-   - Tính tổng chiều rộng cần thiết để cây thông luôn cân.
-   - Với mỗi dòng (từ trên xuống), xác định các vị trí cần đặt ký tự tạo thành tam giác cân.
-   - In từng dòng của tán cây ra.
-   - Cuối cùng, in thêm một dòng thân cây nằm giữa.
-*/
   </script>
+</body>
+
 </html>

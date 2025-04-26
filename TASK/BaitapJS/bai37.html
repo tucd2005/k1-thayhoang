@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm và Xóa Phần Tử với DOM</title>
+    <style>
+        .container {
+            margin: 20px;
+        }
+
+        .item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Danh sách phần tử</h1>
+        <div id="list">
+            <div class="item">Phần tử 1</div>
+            <div class="item">Phần tử 2</div>
+        </div>
+        <button onclick="addItem()">Thêm phần tử</button>
+        <button onclick="removeItem()">Xóa phần tử</button>
+    </div>
+    <script>
+
+        let count = 3
+
+        function addItem() {
+            const list = document.getElementById('list');
+            const newItem = document.createElement('div')
+            newItem.className = "item"
+            newItem.textContent = "phan tu " + count;
+            list.appendChild(newItem)
+            count++
+
+        }
+
+        function removeItem() {
+            const list = document.getElementById('list')
+            const items = list.getElementsByClassName('item')
+            if (items.length > 0) {
+                list.removeChild(items[items.length - 1])
+                count--
+            } else {
+                alert("khoong con phan tu de xoa")
+            }
+        }
+    </script>
+</body>
+
+</html>

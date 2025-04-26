@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <a href="https://chatgpt.com/" id="anchor">Chat GPT</a>
+  <form action="" id="loginForm" method="get">
+    <div class="mb-3">
+      <label for="usernameInput" class="form-label">Username</label>
+      <input type="text" id="usernameInput" class="form-control" placeholder="Email">
+    </div>
+    <div class="mb-3">
+      <label for="passwordInput" class="form-label">Password</label>
+      <input type="password" id="passwordInput" class="form-control" placeholder="Password">
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary w-100">Send</button>
+    </div>
+  </form>
+
+  <script>
+    const aElement = document.getElementById("anchor");
+    aElement.addEventListener("click", function (event) {
+      event.preventDefault();
+      console.log("hello");
+    });
+
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const username = document.getElementById("usernameInput");
+      const password = document.getElementById("passwordInput");
+
+    //   const userInfo = {
+    //     username: username.value,
+    //     password: password.value
+    //   };
+    //   console.log(userInfo);
+      // c2 
+      const formData = new FormData(this);
+	const userInfor = Object.fromEntries(formData);
+	// Call API:
+	console.log(userInfor);
+	this.reset();
+    });
+  </script>
+</body>
+</html>
