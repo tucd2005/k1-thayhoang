@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getData(callback) {
+            // Code của bạn ở đây
+            setTimeout(() => {
+                const data = [1, 2, 3, 4]
+                callback(data)
+            }, 1000)
+
+        }
+
+        // Sử dụng
+        getData((data) => {
+            console.log(data); // Sau 1 giây in ra: [1, 2, 3, 4]
+        });
+
+
+        // =========================
+        function getDataaa() {
+            // Code của bạn ở đây 
+            return new Promise((rerolve, reject) => {
+                setTimeout(() => {
+
+                    setTimeout(() => {
+                        const data = [1, 2, 4, 3]
+                        rerolve(data)
+                    })
+                })
+            }, 1200)
+        }
+        // Sử dụng
+        getDataaa()
+            .then((data) => console.log(data)) // Sau 1 giây in ra: [1, 2, 3, 4]
+            .catch((error) => console.error(error));
+
+
+        function delay(ms) {
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+
+        async function getDat() {
+            await delay(1000);
+            const data = [1, 2, 3, 4];
+            return data;
+        }
+
+        // Sử dụng
+        async function main() {
+            try {
+                const data = await getDat();
+                console.log("Bài 3:", data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        main();
+
+
+    </script>
+</body>
+
+</html>
