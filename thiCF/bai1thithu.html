@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -176,114 +176,64 @@
         <ul class="todo-list" id="todoList"></ul>
     </div>
 
-    <script>
-        let todos = JSON.parse(localStorage.getItem("todos")) || [];
-        let editIndex = null;
-        let filterStatus = "all";
 
-        const todoInput = document.getElementById("todoInput");
-        const todoList = document.getElementById("todoList");
-        const errorMessage = document.getElementById("errorMessage");
-        const actionButton = document.getElementById("actionButton");
 
-        function saveTodos() {
-            localStorage.setItem("todos", JSON.stringify(todos));
-        }
-
-        function renderTodos() {
-            todoList.innerHTML = "";
-
-            const filtered = todos.filter(todo => {
-                if (filterStatus === "active") return !todo.completed;
-                if (filterStatus === "completed") return todo.completed;
-                return true;
-            });
-
-            filtered.forEach((todo, index) => {
-                const li = document.createElement("li");
-                li.className = `todo-item ${todo.completed ? "completed" : ""}`;
-
-                const status = document.createElement("span");
-                status.className = `status ${todo.completed ? "completed" : "active"}`;
-                status.textContent = todo.completed ? "✔" : "⏳";
-                status.onclick = () => toggleTodo(index);
-
-                const taskText = document.createElement("span");
-                taskText.className = "task-text";
-                taskText.textContent = todo.text;
-
-                const editBtn = document.createElement("button");
-                editBtn.className = "edit";
-                editBtn.textContent = "Sửa";
-                editBtn.onclick = () => editTodo(index);
-
-                const deleteBtn = document.createElement("button");
-                deleteBtn.className = "delete";
-                deleteBtn.textContent = "Xóa";
-                deleteBtn.onclick = () => deleteTodo(index);
-
-                li.appendChild(status);
-                li.appendChild(taskText);
-                li.appendChild(editBtn);
-                li.appendChild(deleteBtn);
-
-                todoList.appendChild(li);
-            });
-        }
-
-        function addTodo() {
-            const value = todoInput.value.trim();
-            if (value === "") {
-                errorMessage.style.display = "block";
-                return;
-            }
-            errorMessage.style.display = "none";
-
-            if (editIndex !== null) {
-                todos[editIndex].text = value;
-                editIndex = null;
-                actionButton.textContent = "Thêm";
-            } else {
-                todos.push({ text: value, completed: false });
-            }
-
-            todoInput.value = "";
-            saveTodos();
-            renderTodos();
-        }
-
-        function toggleTodo(index) {
-            todos[index].completed = !todos[index].completed;
-            saveTodos();
-            renderTodos();
-        }
-
-        function editTodo(index) {
-            todoInput.value = todos[index].text;
-            editIndex = index;
-            actionButton.textContent = "Cập nhật";
-        } 
-
-        function deleteTodo(index) {
-            todos.splice(index, 1);
-            saveTodos();
-            renderTodos();
-        }
-
-        function filterTodos(status) {
-            filterStatus = status;
-            document.querySelectorAll(".filter-section button").forEach(btn =>
-                btn.classList.remove("active")
-            );
-            document
-                .querySelector(`.filter-section button[onclick="filterTodos('${status}')"]`)
-                .classList.add("active");
-
-            renderTodos();
-        }
-
-        renderTodos();
-    </script>
 </body>
+<script>
+    function addTodo() {
+        // lấy ô input và giá trị người dùng nhập 
+        const input = document.getElementById("todoInput")
+        const todoText = input.value.trim();
+        // .trim() để loại bỏ khoảng trắng đầu cuối
+
+        //kiểm tra nếu input rỗng thì hiển thị lỗi và không cho thêm 
+        const errorMessage = document.getElementById("errorMessage")
+
+        if (todoText === "") {
+            errorMessage.style.display = "block" // hiển thị thông báo lỗi 
+            return; // dừng hàm 
+        }
+
+
+        // nếu có nội dung hợp lệ, ẩn thông báo lỗi 
+        errorMessage.style.display = "none"
+
+
+
+        // tạo phần tử <li> đại diện cho 1 công việc 
+        const li = document.createElement("li");
+        li.className = "todo-item" // thêm class CSS để dịnh dạng 
+
+        const span = document.createElement("span")  
+        // tạo phần tử span chứa nội dung công việc 
+        span.className = "task-text"
+        // thêm class Css cho span để định dạng 
+        span.textContent = todoText;
+        // đặt nội dung công việc vào span
+
+        li.appendChild(span) // thêm span vào trong <li>
+
+        // thêm <li> vào danh sách công việc 
+        document.getElementById("todoList").appendChild(li)
+        input.value = "" // xóa giá trị trong ô input sau khi thêm công việc 
+        
+        const deleteBtn = document.createElement("button") 
+        // tạo phần tử <button> để xóa công việc 
+        deleteBtn.className = "delete"
+        // thêm class css cho nút xóa 
+        deleteBtn.textContent = "xoa"
+        // đặt nội dung của nút là xoa
+        deleteBtn.setAttribute("onclick", "deleteTodo(this)")
+        // gắn sự kiện onclick cho nút , gọi hàm deleteTodo khi nhấn
+        li.appendChild(deleteBtn)
+        // thêm nút "Xoa"
+
+
+    }
+    function deleteTodo(button) {
+        const li = button.parentElement;
+        li.remove()
+    }
+</script>
 
 </html>

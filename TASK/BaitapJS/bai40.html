@@ -56,7 +56,7 @@
             });
         }
 
-        // Bài 1: Callback
+/**        // Bài 1: Callback
         function runWithCallback() {
             console.log(" Bài 1: Callback");
             getUser(1, (user) => {
@@ -107,29 +107,36 @@
         }
 
         // Bài 3: Async/Await
-        async function runWithAsyncAwait() {
-            console.log(" Bài 3: Async/Await ");
-            const user = await getUserPromise(1);
-            console.log("User:", user);
+        // async function runWithAsyncAwait() {
+        //     console.log(" Bài 3: Async/Await ");
+        //     const user = await getUserPromise(1);
+        //     console.log("User:", user);
 
-            const purchases = await getPurchasesPromise(user.id);
-            console.log("Purchases:", purchases);
+        //     const purchases = await getPurchasesPromise(user.id);
+        //     console.log("Purchases:", purchases);
 
-            const details = await Promise.all(
-                purchases.map((p) =>
-                    getProductDetailsPromise(p.id, p.product, p.price)
-                )
-            );
-            console.log("Product Details:", details);
+        //     const details = await Promise.all(
+        //         purchases.map((p) =>
+        //             getProductDetailsPromise(p.id, p.product, p.price)
+        //         )
+        //     );
+        //     console.log("Product Details:", details);
 
-            const total = details.reduce((sum, item) => sum + item.price, 0);
-            console.log("Total price:", total);
+        //     const total = details.reduce((sum, item) => sum + item.price, 0);
+        //     console.log("Total price:", total);
+        // }
+
+        // // Chạy thử
+        // runWithCallback();
+        // setTimeout(runWithPromise, 4000); // Chờ cho callback xong
+        // setTimeout(runWithAsyncAwait, 8000); // Chờ cho promise xong
+
+*/
+        async function main() {
+            const user = await getUser()
+            console.log(user);
+              
         }
-
-        // Chạy thử
-        runWithCallback();
-        setTimeout(runWithPromise, 4000); // Chờ cho callback xong
-        setTimeout(runWithAsyncAwait, 8000); // Chờ cho promise xong
     </script>
 </body>
 
