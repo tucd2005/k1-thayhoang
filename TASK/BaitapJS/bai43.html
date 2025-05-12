@@ -7,12 +7,13 @@
 </head>
 <body>
 
-    <input type="text" name="" id="" placeholder="Search ... ">
+    <input type="text" name="" id="search" placeholder="Search ... " oninput="searchForm()">
     <button type="submit">Tìm kiếm </button>
     <table border="1">
         <thead>
             
             <tr>
+                <th>id</th>
                 <th >anh san pham</th>
                 <th>ten sp</th>
                 <th>mota</th>
@@ -30,26 +31,43 @@
 </body>
 <script>
     const tbody = document.querySelector("tbody")
+    let allProducts = []
     
     fetch("https://dummyjson.com/products")
     .then(res => res.json())
     .then(data => {
-        const products = data.products;
-        products.forEach(product => {
-            const tr = document.createElement("tr")
-            tr.innerHTML = `
-            
-            <td><img src="${product.thumbnail}" width="50" alt=""></td>
-            <td>${product.title}</td>
-            <td>${product.description.slice(0,50)}...</td>
-            
-            <td>$${product.price}</td>
-            <td>
-                <button onclick="alert("xem chi tiet san pham ID : ${product.id}")">Xem chi tiet</button>
-            </td>
-            `
-            tbody.appendChild(tr)
-        })
+    allProducts = data.products
+    renderProducts(allProducts)
     })
+        function renderProducts(products){
+    tbody.innerHTML = ""
+
+    products.forEach(product => {
+        const tr = document.createElement("tr")
+        tr.innerHTML = `
+        <td>${product.id} </td>
+        <td><img src="${product.thumbnail}" width="50" alt=""></td>
+        <td>${product.title}</td>
+        <td>${product.description.slice(0,50)}...</td>
+        
+        <td>$${product.price}</td>
+        <td>
+            <button onclick="alert("xem chi tiet san pham ID : ${product.id}")">Xem chi tiet</button>
+        </td>
+        `
+        tbody.appendChild(tr)
+    })
+
+}    
+
+
+    // const products = data.products;
+    function searchForm(){
+        const keyword = document.getElementById("search").value.toLowerCase();
+        const filterStudent = allProducts.filter((product) => 
+            product.title.toLowerCase().includes(keyword)
+        )
+        renderProducts(filterStudent)
+    }
 </script>
 </html>
