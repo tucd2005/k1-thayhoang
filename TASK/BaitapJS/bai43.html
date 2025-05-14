@@ -6,68 +6,192 @@
     <title>Document</title>
 </head>
 <body>
+    <form id="searchForm" onsubmit="searchData(); return false;">
+        <input type="text" id="searchInput" placeholder="Search ..." oninput="searchData()">
+        <button type="submit">Tìm kiếm</button>
+        <select id="sortProduct" onchange="sortData()">
+            <option value="">--Sort by price--</option>
+            <option value="asc">Giá tăng dần</option>
+            <option value="desc">Giá giảm dần</option>
+        </select>
+    </form>
 
-    <input type="text" name="" id="search" placeholder="Search ... " oninput="searchForm()">
-    <button type="submit">Tìm kiếm </button>
     <table border="1">
-        <thead>
-            
+        <thead id="productsListHeader">
             <tr>
                 <th>id</th>
-                <th >anh san pham</th>
                 <th>ten sp</th>
                 <th>mota</th>
                 <th>gia</th>
+                <th>anh san pham</th>
                 <th>active</th>
             </tr>
         </thead>
-
-        <tbody>
-            <tr>
-            </tr>
+        <tbody id="productsList">
         </tbody>
-        
     </table>
 </body>
+
 <script>
-    const tbody = document.querySelector("tbody")
-    let allProducts = []
+   const productsList = document.getElementById("productsList")
+const productsListHeader = document.getElementById("productsListHeader")
+const searchForm = document.getElementById("searchForm")
+const searchInput = document.getElementById("searchInput")
+const renderRequest = document.getElementById("renderRequest")
+const sortProduct = document.getElementById("sortProduct")
+let localProduct = []
+
+// async function getData(){
+//     const response = await fetch("https://dummyjson.com/products")
+//     const result = await response.json()
+//     const products =result.products
+//     renderList(products);
+// }
+
+// async function searchData(name){
     
-    fetch("https://dummyjson.com/products")
-    .then(res => res.json())
-    .then(data => {
-    allProducts = data.products
-    renderProducts(allProducts)
-    })
-        function renderProducts(products){
-    tbody.innerHTML = ""
+//     const response = await fetch(`"https://dummyjson.com/products/search?q=${name}"`)
+//     const result = await response.json()
+//     const products = result.products
+//     renderList(products);
+// }
 
-    products.forEach(product => {
-        const tr = document.createElement("tr")
-        tr.innerHTML = `
-        <td>${product.id} </td>
-        <td><img src="${product.thumbnail}" width="50" alt=""></td>
-        <td>${product.title}</td>
-        <td>${product.description.slice(0,50)}...</td>
-        
-        <td>$${product.price}</td>
-        <td>
-            <button onclick="alert("xem chi tiet san pham ID : ${product.id}")">Xem chi tiet</button>
-        </td>
+// getData()
+
+function renderList(products){
+    productsList.innerHTML=""
+    products.forEach(item=>{
+        console.log(item)
+        let trElement = document.createElement("tr")
+        trElement.id=`${item.id}`
+        trElement.innerHTML=`
+        <td>${item.id}</td>
+        <td>${item.title}</td>
+        <td>${item.description}</td>
+        <td>${item.price}</td>
+        <td><img src="${item.images}" height="100" alt=""></td>
+        <td><button onclick="getDetail(${item.id})">Detail</button></td>
         `
-        tbody.appendChild(tr)
+        productsList.appendChild(trElement)
     })
+}
 
-}    
+function getData(){
+    fetch("https://dummyjson.com/products")
+    .then((res)=>{
+        return res.json()
+    })
+    .then((data)=>{
+        localProduct=data.products
+        renderList(data.products)
+        
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+}
+getData()
 
 
-    // const products = data.products;
-    function searchForm(){
-        const keyword = document.getElementById("search").value.toLowerCase();
-        const filterStudent = allProducts.filter((product) => 
-            product.title.toLowerCase().includes(keyword)
-        )
-        renderProducts(filterStudent)
+
+
+function searchData(){
+    let keyword = searchInput.value.trim().toLowerCase()
+    if((keyword)==="") return renderList(localProduct) ;
+    const searchData = fetch(`https://dummyjson.com/products/search?q=${keyword}`)
+    .then((res)=>{
+        return res.json()
+    })
+    .then((data)=>{
+        renderList(data.products)
+        
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+    return searchData
+}
+
+function reset(){
+    productsList.innerHTML=""
+    productsListHeader.style.display=""
+    renderList(localProduct)
+}
+
+function sortData(type=sortProduct.value){
+    console.log(type)
+    switch(type){
+        case 'asc':
+            return renderList(data = localProduct.sort((a,b)=>a.price-b.price))
+        case 'desc':
+            return renderList(data = localProduct.sort((a,b)=>b.price-a.price))
+        case '':
+            return renderList(getData())
     }
+    
+}
+
+function getDetail(id){
+    fetch(`https://dummyjson.com/products/${id}`)
+    .then((res)=>{
+        return res.json()
+    })
+    .then((data)=>{
+        productsList.innerHTML=""
+        productsListHeader.style.display="none"
+            productsList.innerHTML = `
+            <tr>
+                <button onclick="reset()">Back</button>
+            </tr>
+            <tr>
+                <th>id</th>
+                <th>${data.id}</th>
+            </tr>
+            <tr>
+                <th>image:</th>
+                <th><img src="${data.images}" height="100" alt=""></th>
+            </tr>
+            <tr>
+                <th>title:</th>
+                <th>${data.title}</th>
+            </tr>
+            <tr>
+                <th>category</th>
+                <th>${data.category}</th>
+            </tr>
+            <tr>
+                <th>price</th>
+                <th>${data.price}</th>
+            </tr>
+            <tr>
+                <th>description</th>
+                <th>${data.description}</th>
+            </tr>
+            <tr>
+                <th>rating</th>
+                <th>${data.rating}</th>
+            </tr>
+            <tr>
+                <th>stock</th>
+                <th>${data.stock}</th>
+            </tr>
+            <tr>
+                <th>brand</th>
+                <th>${data.brand}</th>
+            </tr>
+            <tr>
+                <th>serial number</th>
+                <th>${data.sku}</th>
+            </tr>
+            `
+    })
+    
+}
+
+searchForm.addEventListener("submit",function(event){
+    event.preventDefault()
+})
+
+
 </script>
 </html>
